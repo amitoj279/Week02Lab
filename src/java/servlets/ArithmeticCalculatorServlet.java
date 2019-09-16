@@ -22,30 +22,29 @@ public class ArithmeticCalculatorServlet extends HttpServlet {
         int first, second;
         String message = "Invalid";
         int result;
-
         try {
-        String firstinput = request.getParameter("first");
-        String secondinput = request.getParameter("second");
 
-        try {
-            if (firstinput == null || firstinput.equals("") || secondinput == null || secondinput.equals("")) {
+            String firstinput = request.getParameter("first");
+            String secondinput = request.getParameter("second");
+
+            try {
+                if (firstinput == null || firstinput.equals("") || secondinput == null || secondinput.equals("")) {
+                    request.setAttribute("finalresult", message);
+
+                    getServletContext().getRequestDispatcher("/WEB-INF/arithmeticcalculator.jsp").forward(request, response);
+                    return;
+                }
+            } catch (Exception e) {
                 request.setAttribute("finalresult", message);
-
                 getServletContext().getRequestDispatcher("/WEB-INF/arithmeticcalculator.jsp").forward(request, response);
                 return;
             }
-        } catch (Exception e) {
-            request.setAttribute("finalresult", message);
-            getServletContext().getRequestDispatcher("/WEB-INF/arithmeticcalculator.jsp").forward(request, response);
-            return;
-        }
 
-        first = Integer.parseInt(firstinput);
-        second = Integer.parseInt(secondinput);
+            first = Integer.parseInt(firstinput);
+            second = Integer.parseInt(secondinput);
 
-        String choice = request.getParameter("btn");
+            String choice = request.getParameter("btn");
 
-        
             if (choice.equals("+")) {
                 result = first + second;
                 message = Integer.toString(result);
