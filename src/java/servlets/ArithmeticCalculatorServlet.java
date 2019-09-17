@@ -1,7 +1,6 @@
 package servlets;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -47,8 +46,7 @@ public class ArithmeticCalculatorServlet extends HttpServlet {
 
             if (choice.equals("+")) {
                 result = first + second;
-                message = Integer.toString(result);
-                request.setAttribute("finalresult", message);
+
             } else if (choice.equals("-")) {
                 result = first - second;
                 message = Integer.toString(result);
